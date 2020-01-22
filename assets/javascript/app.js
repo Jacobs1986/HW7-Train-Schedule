@@ -42,3 +42,8 @@ $("#submit").on("click", function (event) {
     $("#time").val("");
     $("#frequency").val("");
 })
+
+// grabe the data when a new child is added
+database.ref().on("child_added", function(snapshot) {
+    console.log(snapshot.val());
+})
