@@ -22,11 +22,23 @@ $("#submit").on("click", function (event) {
     // get the value from each of the items in the form
     // save them into a variable
     let name = $("#trainName").val().trim();
+    let destination = $("#destination").val().trim();
+    let time = $("#time").val().trim();
+    let frequency = $("#frequency").val().trim();
     console.log(name);
+    console.log(destination);
+    console.log(time);
+    console.log(frequency);
     // save the variables into the firebase database
     database.ref().push({
-        name: name
+        name: name,
+        destination: destination,
+        time: time,
+        frequency: frequency
     })
     // clear each of the text boxes
     $("#trainName").val("").focus();
+    $("#destination").val("");
+    $("#time").val("");
+    $("#frequency").val("");
 })
