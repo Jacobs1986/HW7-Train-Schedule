@@ -33,7 +33,7 @@ $("#submit").on("click", function (event) {
     database.ref().push({
         name: name,
         destination: destination,
-        time: time,
+        firsttrain: time,
         frequency: frequency
     })
     // clear each of the text boxes
@@ -44,6 +44,14 @@ $("#submit").on("click", function (event) {
 })
 
 // grabe the data when a new child is added
-database.ref().on("child_added", function(snapshot) {
+database.ref().on("child_added", function (snapshot) {
     console.log(snapshot.val());
+    $("#table-body")
+        .append(
+            `<tr>
+            <td>${snapshot.val().name}</td>
+            <td>${snapshot.val().destination}</td>
+            <td>${snapshot.val().frequency}</td>
+    </tr>`
+        )
 })
