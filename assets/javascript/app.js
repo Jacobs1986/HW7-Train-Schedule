@@ -45,13 +45,30 @@ $("#submit").on("click", function (event) {
 
 // grabe the data when a new child is added
 database.ref().on("child_added", function (snapshot) {
-    console.log(snapshot.val());
+    console.log(snapshot.val())
+    let time = snapshot.val().firsttrain;
+    console.log(time);
+    let tFrequency = snapshot.val().frequency;
+    console.log(tFrequency);
+    let firstTime = moment(time, "HH:mm").subtract(1, "years");
+    console.log(firstTime);
+    let diffTime = moment().diff(moment(firstTime), "minutes");
+    console.log(`Difference in time: ${diffTime}`);
+    let timeApart = diffTime % tFrequency;
+    let minutesUntilTrain = tFrequency - timeApart;
+    console.log(minutesUntilTrain);
+    console.log(timeApart);
+    let nextTrain = moment().add(minutesUntilTrain, "minutes");
+    nextTrain = moment(nextTrain).format("hh:mm a");
+    console.log(`The next train is arriving at: ${nextTrain}`);
     $("#table-body")
         .append(
             `<tr>
                 <td>${snapshot.val().name}</td>
                 <td>${snapshot.val().destination}</td>
                 <td>${snapshot.val().frequency}</td>
+                <td>${nextTrain}</td>
+                <td>${minutesUntilTrain}</td>
             </tr>`
         )
 })
