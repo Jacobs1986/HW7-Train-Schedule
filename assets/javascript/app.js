@@ -49,9 +49,9 @@ database.ref().on("child_added", function (snapshot) {
     $("#table-body")
         .append(
             `<tr>
-            <td>${snapshot.val().name}</td>
-            <td>${snapshot.val().destination}</td>
-            <td>${snapshot.val().frequency}</td>
-    </tr>`
+                <td>${snapshot.val().name}</td>
+                <td>${snapshot.val().destination}</td>
+                <td>${snapshot.val().frequency}</td>
+            </tr>`
         )
 })
