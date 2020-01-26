@@ -3,3 +3,25 @@
     border-style: solid;
     border-color: red;
 }
+
+.border-2 {
+    border-width: 2px;
+    border-style: solid;
+    border-color: blue;
+}
+
+body {
+    background-image: url("../train-cartoon.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+h1 {
+    text-align: center;
+    padding: 2%;
+    background-color: royalblue;
+}
+
+h4 {
+    text-align: center;
+}
